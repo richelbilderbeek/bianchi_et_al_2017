@@ -10,7 +10,8 @@ r_github_packages:
   - jtextor/epitope-prediction
 
 script:
-  - make
+  - echo "Hello"
+  - # make
 
 after_success:
   - find .
