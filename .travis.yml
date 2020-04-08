@@ -6,6 +6,10 @@ r_github_packages:
   - jtextor/epitope-prediction
 
 script:
+  - echo "Prerequisites"
+  - make --version
+  - wget --version
+  - echo "Real work"
   - make
 
 after_success:
