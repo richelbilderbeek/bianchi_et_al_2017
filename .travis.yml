@@ -1,0 +1,20 @@
+language: r
+dist: bionic
+cache: packages
+
+r_packages:
+  - seqinr
+  - data.table
+
+r_github_packages:
+  - jtextor/epitope-prediction
+
+script:
+  - make
+
+after_success:
+  - find .
+
+after_failure:
+  - find .
+
