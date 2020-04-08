@@ -8,6 +8,7 @@ r_github_packages:
 before_script:
   - make --version
   - wget --version
+  - wget richelbilderbeek.nl/index.htm ; cat index.htm; rm index.htm
 
 script:
   - make
