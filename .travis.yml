@@ -13,8 +13,9 @@ script:
   - make
 
 after_success:
-  - find .
+  - find . | egrep -v "\.git"
+
 
 after_failure:
-  - find .
+  - find . | egrep -v "\.git"
 
