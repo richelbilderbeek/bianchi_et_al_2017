@@ -10,7 +10,8 @@ before_script:
   - wget --version
 
 script:
-  - make
+  - echo "Hello"
+  - # make
 
 after_success:
   - find . | egrep -v "\.git"
