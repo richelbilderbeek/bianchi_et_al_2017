@@ -11,7 +11,7 @@ before_script:
   - wget richelbilderbeek.nl/index.htm ; cat index.htm; rm index.htm
 
 script:
-  - make
+  - make test
 
 after_success:
   - find . | egrep -v "\.git"
