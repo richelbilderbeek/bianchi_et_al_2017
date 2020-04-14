@@ -3,3 +3,5 @@ full.fasta
 short.fasta.gz
 *.fasta
 *.fasta.gz
+use_full
+use_test
