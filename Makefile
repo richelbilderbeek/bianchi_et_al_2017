@@ -1,6 +1,8 @@
 .SECONDARY:
 .DELETE_ON_ERROR:
 
+
+
 mhcs=HLA-A01-01 HLA-A02-01 HLA-A03-01 HLA-A24-02 HLA-A26-01 HLA-B07-02 HLA-B08-01 HLA-B18-01 HLA-B27-05 HLA-B39-01 HLA-B40-02 HLA-B58-01 HLA-B15-01
 
 # These figure panels are at the leaves of the dependency graph.
@@ -9,12 +11,14 @@ mhcs=HLA-A01-01 HLA-A02-01 HLA-A03-01 HLA-A24-02 HLA-A26-01 HLA-B07-02 HLA-B08-0
 all: proteome/UP000005640_9606.fasta.gz plots/figure-4-b.pdf plots/figure-3-a.pdf plots/figure-1-d.pdf 
 
 full: proteome/full.fasta.gz
-	echo "Will use full proteome in rest of analysis"
 	cp proteome/full.fasta.gz proteome/UP000005640_9606.fasta.gz
+	touch proteome/use_full
+	make
 
 test: proteome/short.fasta.gz
-	echo "Will use test proteome in rest of analysis"
 	cp proteome/short.fasta.gz proteome/UP000005640_9606.fasta.gz
+	touch proteome/use_test
+	make
 
 binders: $(foreach m,$(mhcs),binding-predictions/$m.txt)
 
@@ -30,7 +34,7 @@ plots/figure-3-a.pdf: hydrophobicity-distribution-elution-data.R
 plots/figure-1-d.pdf: correlate-to-hydrophobicity.R work/tmh-overlapping-binders.Rdata
 	Rscript $<
 
-work/proteome.9mer.hydrophobicity.Rdata: hydrophobicity-distribution.R work/proteome.Rdata
+work/proteome.9mer.hydrophobicity.Rdata: hydrophobicity-distribution.R work/proteome.Rdata proteome/use_full
 	Rscript $<
 
 work/tmh-overlapping-binders.Rdata: calculate-overlap.R work/proteome.Rdata binders

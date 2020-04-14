@@ -7,8 +7,6 @@ Branch   |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)
 
 R code for 'Transmembrane Helices Are an Overlooked Source of Major Histocompatibility Complex Class I Epitopes', by Frans Bianchi, Johannes Textor and Geert van den Bogaart.
 
-## Original text
-
 These R scripts make almost all figures in the paper 
 "Transmembrane helices are an overlooked source of MHC class I epitopes"
 by Frans Bianchi, Johannes Textor, and Geert van den Bogaart.
@@ -17,27 +15,49 @@ by Frans Bianchi, Johannes Textor, and Geert van den Bogaart.
 Figure 3 is not made by these scripts, as it was made using another
 program.
 
-To run the code, you need:
+## Usage
 
- * A working R installation and the R packages 'seqinr' and 'data.table'
- * The R package 'EpitopePrediction', which can be installed from github
-   using 'devtools::install_github("jtextor/epitope-prediction")'
- * GNU Make
- * The program 'wget'
-
-
-If you have these installed, you should be able to create all figures by
-simply typing 'make'. All necessary data will either be downloaded (such
-as the human proteome) or is included in the folder 'data/' (such as the
+If you have all prerequisites installed, 
+you should be able to create all figures by typing `make full ; make`. 
+All necessary data will either be downloaded (such
+as the human proteome) or is included in the folder `data/` (such as the
 transmembrane domain predictions).
-
-If you do not have the program 'wget' and do not wish to install it, you 
-can also download the human proteome yourself and store it in the folder
-'proteome/' before typing 'make'. 
 
 Be aware that the HLA binding predictions can take several hours. It can
 be useful to speed up the process by running e.g. 'make -j 8' to run 8 
 jobs in parallel. 
+
+### Run test
+
+```
+make clean
+make test
+make
+```
+
+### Run full
+
+```
+make clean
+make full
+make
+```
+
+## Prerequisites
+
+To run the code, you need:
+
+ * A working R installation and the R packages `seqinr` and `data.table`
+ * The R package `EpitopePrediction`, which can be installed from github
+   using `remotes::install_github("jtextor/epitope-prediction")`
+ * GNU Make
+ * The program `wget`
+
+If you do not have the program `wget` or do not wish to install it, you 
+can also download the human proteome yourself and store it in the folder
+'proteome/' before typing 'make'. 
+
+## Files
 
 The folder 'data' contains two files with peptide sequences that were 
 eluted from B lymphoblastoid cell lines. These sequences are taken from
