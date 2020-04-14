@@ -18,30 +18,28 @@ program.
 ## Usage
 
 If you have all prerequisites installed, 
-you should be able to create all figures by typing `make full ; make`. 
+you should be able to create all figures by typing `make`. 
 All necessary data will either be downloaded (such
 as the human proteome) or is included in the folder `data/` (such as the
 transmembrane domain predictions).
 
-Be aware that the HLA binding predictions can take several hours. It can
-be useful to speed up the process by running e.g. 'make -j 8' to run 8 
-jobs in parallel. 
-
 ### Run test
 
 ```
-make clean
 make test
-make
 ```
 
 ### Run full
 
 ```
-make clean
 make full
-make
 ```
+
+:warning: to produce figure 4b, modify the Makefile by hand :warning
+
+Be aware that the HLA binding predictions can take several hours. It can
+be useful to speed up the process by running e.g. 'make -j 8' to run 8 
+jobs in parallel. 
 
 ## Prerequisites
 
