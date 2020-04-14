@@ -74,14 +74,35 @@ x <- tapply( 1:nrow(x), list(x$V1),
 #  [1]  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40  41  42  43  44  45  46
 # [24]  47  48  49  50  51  52  53  54  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84
 # [47]  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100
-proteome[["A0A075B6K6"]]
-x[["A0A075B6K6"]]
-names(x)
 
-# For each protein name...
-for( i in names(x) ){
-	x[[i]] <- intersect( x[[i]], 1:(nchar(proteome[[i]])-8) ) # Bug in this line
+# Notes:
+
+proteome[["A0A075B6K6"]] # The sequence
+nchar(proteome[["A0A075B6K6"]])
+x[["A0A075B6K6"]] # The indices, in this case { -6 -5 -4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 }
+names(x) # The protein names
+protein_name <- "A0A075B6K6"
+
+for(protein_name in names(x) ){
+  if (is.null(proteome[[protein_name]])) {
+    message("Cannot find protein named '", protein_name, "'")
+    next
+  }
+  expect_true(!is.null(x[[protein_name]]))
+  indices <- x[[protein_name]]
+  protein_sequence <- proteome[[protein_name]]
+  protein_sequence_length <- nchar(protein_sequence)
+	x[[protein_name]] <- intersect(
+	  indices,
+	  1:(protein_sequence_length - 8)
+	)
 }
+
+# OLDSKOOL
+# For each protein name...
+#for( i in names(x) ){
+#	x[[i]] <- intersect( x[[i]], 1:(nchar(proteome[[i]])-8) ) # Bug in this line
+#}
 
 for( i in names(proteome) ){
 	if( is.null(x[[i]]) ){
