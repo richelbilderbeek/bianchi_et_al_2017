@@ -12,6 +12,7 @@ before_script:
 
 script:
   - make test
+  - make
 
 after_success:
   - find . | egrep -v "\.git"

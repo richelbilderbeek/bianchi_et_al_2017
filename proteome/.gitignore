@@ -1,3 +1,5 @@
 UP000005640_9606.fasta.gz
 full.fasta
 short.fasta.gz
+*.fasta
+*.fasta.gz

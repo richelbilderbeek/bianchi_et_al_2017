@@ -6,10 +6,14 @@ mhcs=HLA-A01-01 HLA-A02-01 HLA-A03-01 HLA-A24-02 HLA-A26-01 HLA-B07-02 HLA-B08-0
 # These figure panels are at the leaves of the dependency graph.
 # All other figure panels are made as side-effects by intermediate
 # scripts.
-all: proteome/full.fasta.gz plots/figure-4-b.pdf plots/figure-3-a.pdf plots/figure-1-d.pdf 
+all: proteome/UP000005640_9606.fasta.gz plots/figure-4-b.pdf plots/figure-3-a.pdf plots/figure-1-d.pdf 
+
+full: proteome/full.fasta.gz
+	echo "Will use full proteome in rest of analysis"
 	cp proteome/full.fasta.gz proteome/UP000005640_9606.fasta.gz
 
-test: proteome/short.fasta.gz plots/figure-4-b.pdf plots/figure-3-a.pdf plots/figure-1-d.pdf
+test: proteome/short.fasta.gz
+	echo "Will use test proteome in rest of analysis"
 	cp proteome/short.fasta.gz proteome/UP000005640_9606.fasta.gz
 
 binders: $(foreach m,$(mhcs),binding-predictions/$m.txt)
@@ -39,20 +43,17 @@ work/proteome.Rdata : prepare-data.R proteome/UP000005640_9606.fasta.gz
 binding-predictions/HLA-%.txt : predict-binders.R proteome/UP000005640_9606.fasta.gz
 	Rscript $< HLA-$* > $@	
 
-proteome/UP000005640_9606.fasta.gz:
-	wget ftp://ftp.ebi.ac.uk/pub/databases/reference_proteomes/QfO/Eukaryota/UP000005640_9606.fasta.gz -O $@
-
 proteome/full.fasta.gz:
 	wget ftp://ftp.ebi.ac.uk/pub/databases/reference_proteomes/QfO/Eukaryota/UP000005640_9606.fasta.gz -O proteome/full.fasta.gz
 
 proteome/full.fasta: proteome/full.fasta.gz
-	gunzip proteome/full.fasta.gz
+	gunzip -k proteome/full.fasta.gz
 
 proteome/short.fasta: proteome/full.fasta
 	head proteome/full.fasta -n 21 > proteome/short.fasta
 
 proteome/short.fasta.gz: proteome/short.fasta
-	gzip proteome/short.fasta
+	gzip -k proteome/short.fasta
 
 clean:
 	rm -f plots/* proteome/* work/* binding-predictions/*
