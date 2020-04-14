@@ -1,7 +1,7 @@
 Package: bianchietal2017
 Type: Package
 Title: Bianchi Et Al Two Thousand Seventeen
-Version: 0.1
+Version: 1.0
 Authors@R: c(
   person("Johannes", "Textor", email = "johannes.textor@radboudumc.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0459-9458")),
   person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("ctb"), comment = c(ORCID = "0000-0003-1107-7049")))
