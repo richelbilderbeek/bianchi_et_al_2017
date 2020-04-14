@@ -67,3 +67,13 @@ the following publication, which is also cited in our paper:
  differences between HLA-A and B in the immunopeptidome" 
 by Schellens et al, PLoS One (2015) 10:e0136417. 
 (DOI: 10.1371/journal.pone.0136417)
+
+## Makefile as a call graph
+
+![](makefile.png)
+
+## Create graph
+
+```
+make -Bnd | ~/GitHubs/makefile2graph/make2graph | dot -Tpng -o makefile.png
+```
