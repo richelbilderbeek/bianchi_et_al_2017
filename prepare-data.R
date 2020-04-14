@@ -4,10 +4,14 @@
 #
 # Also creates a few other files that are helpful for the analysis.
 #
+# Input files:
+# * `proteome/UP000005640_9606.fasta.gz`: proteome as FASTA file
+#
 # Output files:
 #
 #  * `work/protein-lengths.txt`: length of all proteins in proteome
-#  * `"work/tmh.9mers.Rdata"`: per TMH protein, the indices at which it is TMH
+#  * `work/proteome.Rdata`: proteome as an R list
+#  * `work/tmh.9mers.Rdata`: per TMH protein, the indices at which it is TMH
 #
 # Proteome is downloaded from:
 #
@@ -32,8 +36,16 @@ sink()
 expect_true(file.exists("work/protein-lengths.txt"))
 
 proteome <- x
-#proteome <- lapply( x, function(x) strsplit( x,"" )[[1]] )
 save(proteome,file = "work/proteome.Rdata")
+# $A0A024R1R8
+# [1] "MSSHEGGKKKALKQPKKQAKEMDEEEKAFKQKQKEEQKKLEVLKAKVVGKGPLATGGIKKSGKK"
+#
+# $A0A024RBG1
+# [1] "MMKFKPNQTRTYDREGFKKRAACLCFRSEQEDEVLLVSSSRYPDQWIVPGGGMEPEEEPGGAAVREVYEEAGVKGKLGRLLGIFEQNQDRKHRTYVYVLTVTEILEDWEDSVNIGRKREWFKVEDAIKVLQCHKPVHAEYLEKLKLGCSPANGNSTVPSLPDNNALFVTAAQTSGLPSSVR"
+#
+# $A0A075B6H5
+# [1] "METVVTTLPREGGVGPSRKMLLLLLLLGPGSGLSAVVSQHPSRVICKSGTSVNIECRSLDFQATTMFWYRQLRKQSLMLMATSNEGSEVTYEQGVKKDKFPINHPNLTFSALTVTSAHPEDSSFYICSAR"
+
 
 # generate a list containing the starting position of all 9mers overlapping
 # with predicted transmembrane helices
@@ -79,14 +91,6 @@ x <- tapply( 1:nrow(x), list(x$V1),
 #  [1]  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40  41  42  43  44  45  46
 # [24]  47  48  49  50  51  52  53  54  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84
 # [47]  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100
-
-# Notes:
-
-proteome[["A0A075B6K6"]] # The sequence
-nchar(proteome[["A0A075B6K6"]])
-x[["A0A075B6K6"]] # The indices, in this case { -6 -5 -4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 }
-names(x) # The protein names
-protein_name <- "A0A075B6K6"
 
 for(protein_name in names(x) ){
   if (is.null(proteome[[protein_name]])) {
