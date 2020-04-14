@@ -68,6 +68,12 @@ the following publication, which is also cited in our paper:
 by Schellens et al, PLoS One (2015) 10:e0136417. 
 (DOI: 10.1371/journal.pone.0136417)
 
+## Open questions
+
+ * [Why minus 8 in prepare-data.R?](https://github.com/richelbilderbeek/bianchi_et_al_2017/issues/3)
+ * [Where does 'trans-membrane-analysis-shortened.txt' come from?](https://github.com/richelbilderbeek/bianchi_et_al_2017/issues/4)
+ * [How is figure 3 created?](https://github.com/richelbilderbeek/bianchi_et_al_2017/issues/2)
+
 ## Makefile as a call graph
 
 ![](makefile.png)
