@@ -4,7 +4,12 @@
 #
 # Also creates a few other files that are helpful for the analysis.
 #
-# Proteome is downloded from:
+# Output files:
+#
+#  * `work/protein-lengths.txt`: length of all proteins in proteome
+#  * `"work/tmh.9mers.Rdata"`: per TMH protein, the indices at which it is TMH
+#
+# Proteome is downloaded from:
 #
 #   ftp://ftp.ebi.ac.uk/pub/databases/reference_proteomes/
 #     QfO/Eukaryota/UP000005640_9606.fasta.gz
@@ -97,7 +102,6 @@ for(protein_name in names(x) ){
 	  1:(protein_sequence_length - 8)
 	)
 }
-
 # OLDSKOOL
 # For each protein name...
 #for( i in names(x) ){
@@ -111,6 +115,28 @@ for( i in names(proteome) ){
 }
 
 tmh.9mers <- x
-save( tmh.9mers, file="work/tmh.9mers.Rdata")
+save( tmh.9mers, file = "work/tmh.9mers.Rdata")
+message(
+  "Saved to 'work/tmh.9mers.Rdata' as a ",
+  class(tmh.9mers), ":"
+)
+print(head(tmh.9mers, n = 3))
 
-
+# Results in
+# $A0A075B6K6
+#  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+#
+# $A0A075B734
+#   [1]  33  34  35  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55
+#  [24]  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78
+#  [47]  79  80  81  82  83  84  85  86  87  88  89  90 116 117 118 119 120 121 122 123 124 125 126
+#  [70] 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 148 149 150
+#  [93] 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173
+# [116] 174 175 176 177 178 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208
+# [139] 209 210 211 212 213 214 215 216 217 218 219 220 221 251 252 253 254 255 256 257 258 259 260
+# [162] 261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 281
+#
+# $A0A087WTH1
+#  [1]  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40  41  42  43  44  45  46
+# [24]  47  48  49  50  51  52  53  54  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84
+# [47]  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100
