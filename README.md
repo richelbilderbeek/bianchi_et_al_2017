@@ -12,8 +12,7 @@ These R scripts make almost all figures in the paper
 by Frans Bianchi, Johannes Textor, and Geert van den Bogaart.
 (DOI: 10.3389/fimmu.2017.01118)
 
-Figure 3 is not made by these scripts, as it was made using another
-program.
+Figure 3 is made by [tmh-predictions/HLA_predictions.xlsx](tmh-predictions/HLA_predictions.xlsx).
 
 ## Usage
 
@@ -70,7 +69,6 @@ by Schellens et al, PLoS One (2015) 10:e0136417.
 
  * [Why minus 8 in prepare-data.R?](https://github.com/richelbilderbeek/bianchi_et_al_2017/issues/3)
  * [Where does 'trans-membrane-analysis-shortened.txt' come from?](https://github.com/richelbilderbeek/bianchi_et_al_2017/issues/4)
- * [How is figure 3 created?](https://github.com/richelbilderbeek/bianchi_et_al_2017/issues/2)
 
 ## Makefile as a call graph
 
