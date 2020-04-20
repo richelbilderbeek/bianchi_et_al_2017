@@ -68,7 +68,6 @@ by Schellens et al, PLoS One (2015) 10:e0136417.
 ## Open questions
 
  * [Where does 'trans-membrane-analysis-shortened.txt' come from?](https://github.com/richelbilderbeek/bianchi_et_al_2017/issues/4)
- * [Where does 'kyte.doolittle.scale.Rdata' come from?](https://github.com/richelbilderbeek/bianchi_et_al_2017/issues/7)
  * [Where does 'non-TMH-Bcell-elution.txt' come from?](https://github.com/richelbilderbeek/bianchi_et_al_2017/issues/8)
  * [Where does 'TMH-Bcell-elution.txt' come from?](https://github.com/richelbilderbeek/bianchi_et_al_2017/issues/9)
 
