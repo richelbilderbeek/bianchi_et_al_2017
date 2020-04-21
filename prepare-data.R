@@ -112,6 +112,12 @@ for (protein_name in names(x)) {
 #	x[[i]] <- intersect( x[[i]], 1:(nchar(proteome[[i]])-8) ) # Bug in this line
 #}
 
+for( i in names(proteome) ){
+	if( is.null(x[[i]]) ){
+		x[[i]] <- integer(0)
+	}
+}
+
 tmh.9mers <- x
 save(tmh.9mers, file = "work/tmh.9mers.Rdata")
 message(
