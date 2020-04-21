@@ -114,9 +114,6 @@ for (protein_name in names(x)) {
 
 for (i in names(proteome) ){
   testthat::expect_true(!is.null(x[[i]]))
-	if(is.null(x[[i]])) {
-		x[[i]] <- integer(0)
-	}
 }
 
 tmh.9mers <- x
