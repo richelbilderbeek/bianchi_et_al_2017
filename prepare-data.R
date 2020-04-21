@@ -92,9 +92,9 @@ x <- tapply( 1:nrow(x), list(x$V1),
 # [24]  47  48  49  50  51  52  53  54  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84
 # [47]  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100
 
-for(protein_name in names(x) ){
+for (protein_name in names(x)) {
   if (is.null(proteome[[protein_name]])) {
-    message("Cannot find protein named '", protein_name, "'")
+    #message("Cannot find protein named '", protein_name, "'")
     next
   }
   expect_true(!is.null(x[[protein_name]]))
@@ -112,14 +112,15 @@ for(protein_name in names(x) ){
 #	x[[i]] <- intersect( x[[i]], 1:(nchar(proteome[[i]])-8) ) # Bug in this line
 #}
 
-for( i in names(proteome) ){
-	if( is.null(x[[i]]) ){
+for (i in names(proteome) ){
+  testthat::expect_true(!is.null(x[[i]]))
+	if(is.null(x[[i]])) {
 		x[[i]] <- integer(0)
 	}
 }
 
 tmh.9mers <- x
-save( tmh.9mers, file = "work/tmh.9mers.Rdata")
+save(tmh.9mers, file = "work/tmh.9mers.Rdata")
 message(
   "Saved to 'work/tmh.9mers.Rdata' as a ",
   class(tmh.9mers), ":"
@@ -144,3 +145,4 @@ print(head(tmh.9mers, n = 3))
 #  [1]  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40  41  42  43  44  45  46
 # [24]  47  48  49  50  51  52  53  54  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84
 # [47]  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100
+
