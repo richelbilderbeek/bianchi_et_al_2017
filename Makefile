@@ -3,20 +3,22 @@
 
 
 
-mhcs=HLA-A01-01 HLA-A02-01 HLA-A03-01 HLA-A24-02 HLA-A26-01 HLA-B07-02 HLA-B08-01 HLA-B18-01 HLA-B27-05 HLA-B39-01 HLA-B40-02 HLA-B58-01 HLA-B15-01
+mhcs = HLA-A01-01 HLA-A02-01 HLA-A03-01 HLA-A24-02 HLA-A26-01 HLA-B07-02 HLA-B08-01 HLA-B18-01 HLA-B27-05 HLA-B39-01 HLA-B40-02 HLA-B58-01 HLA-B15-01
+proteome_filename = proteome/UP000005640_9606.fasta.gz
+targets = $(proteome_filename) plots/figure-3-a.pdf plots/figure-1-d.pdf
 
 # These figure panels are at the leaves of the dependency graph.
 # All other figure panels are made as side-effects by intermediate
 # scripts.
-all: proteome/UP000005640_9606.fasta.gz plots/figure-3-a.pdf plots/figure-1-d.pdf 
+all: $(targets)
 #all: proteome/UP000005640_9606.fasta.gz plots/figure-4-b.pdf plots/figure-3-a.pdf plots/figure-1-d.pdf 
 
 full: proteome/full.fasta.gz
-	cp proteome/full.fasta.gz proteome/UP000005640_9606.fasta.gz
+	cp proteome/full.fasta.gz $(proteome_filename)
 	make
 
 test: proteome/short.fasta.gz
-	cp proteome/short.fasta.gz proteome/UP000005640_9606.fasta.gz
+	cp proteome/short.fasta.gz $(proteome_filename)
 	make
 
 binders: $(foreach m,$(mhcs),binding-predictions/$m.txt)
@@ -40,10 +42,10 @@ work/tmh-overlapping-binders.Rdata: calculate-overlap.R work/proteome.Rdata bind
 	Rscript $<
 
 # also generates some other files, see the script
-work/proteome.Rdata : prepare-data.R proteome/UP000005640_9606.fasta.gz
+work/proteome.Rdata : prepare-data.R $(proteome_filename)
 	Rscript $<
 
-binding-predictions/HLA-%.txt : predict-binders.R proteome/UP000005640_9606.fasta.gz
+binding-predictions/HLA-%.txt : predict-binders.R $(proteome_filename)
 	Rscript $< HLA-$* > $@	
 
 proteome/full.fasta.gz:
