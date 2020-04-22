@@ -43,8 +43,16 @@ plots/figure-1-d.pdf: correlate-to-hydrophobicity.R work/tmh-overlapping-binders
 work/tmh-overlapping-binders.Rdata: calculate-overlap.R work/proteome.Rdata binders
 	Rscript $<
 
-# also generates some other files, see the script
+# File 1/3 created by prepare-data.R
+work/protein-lengths.txt : prepare-data.R $(proteome_filename) $(tma_filename)
+	Rscript $<
+
+# File 2/3 created by prepare-data.R
 work/proteome.Rdata : prepare-data.R $(proteome_filename) $(tma_filename)
+	Rscript $<
+
+# File 3/3 created by prepare-data.R
+work/tmh.9mers.Rdata : prepare-data.R $(proteome_filename) $(tma_filename)
 	Rscript $<
 
 binding-predictions/HLA-%.txt : predict-binders.R $(proteome_filename)
