@@ -6,6 +6,7 @@
 mhcs = HLA-A01-01 HLA-A02-01 HLA-A03-01 HLA-A24-02 HLA-A26-01 HLA-B07-02 HLA-B08-01 HLA-B18-01 HLA-B27-05 HLA-B39-01 HLA-B40-02 HLA-B58-01 HLA-B15-01
 proteome_filename = proteome/UP000005640_9606.fasta.gz
 tma_filename = tmh-predictions/trans-membrane-analysis-shortened.txt
+kyte_doolittle_scale_filename = data/kyte.doolittle.scale.Rdata
 
 targets = $(proteome_filename) plots/figure-3-a.pdf plots/figure-1-d.pdf
 
@@ -31,13 +32,13 @@ binders: $(foreach m,$(mhcs),binding-predictions/$m.txt)
 #work/hydrophobe-control-peptides.Rdata: hydrophobe-controls.R work/tmh.9mers.Rdata work/proteome.9mer.hydrophobicity.Rdata
 #	Rscript $<
 
-plots/figure-3-a.pdf: hydrophobicity-distribution-elution-data.R
+plots/figure-3-a.pdf: hydrophobicity-distribution-elution-data.R $(kyte_doolittle_scale_filename)
 	Rscript $<
 
-plots/figure-1-d.pdf: correlate-to-hydrophobicity.R work/tmh-overlapping-binders.Rdata
+plots/figure-1-d.pdf: correlate-to-hydrophobicity.R work/tmh-overlapping-binders.Rdata $(kyte_doolittle_scale_filename)
 	Rscript $<
 
-#work/proteome.9mer.hydrophobicity.Rdata: hydrophobicity-distribution.R work/proteome.Rdata work/tmh.9mers.Rdata
+#work/proteome.9mer.hydrophobicity.Rdata: hydrophobicity-distribution.R work/proteome.Rdata work/tmh.9mers.Rdata $(kyte_doolittle_scale_filename)
 #	Rscript $<
 
 work/tmh-overlapping-binders.Rdata: calculate-overlap.R work/proteome.Rdata binders work/tmh.9mers.Rdata work/protein-lengths.txt
