@@ -76,5 +76,5 @@ by Schellens et al, PLoS One (2015) 10:e0136417.
 ## Create graph
 
 ```
-make -Bnd | ../makefile2graph/make2graph | dot -Tpng -o pics/makefile.png
+make pic
 ```

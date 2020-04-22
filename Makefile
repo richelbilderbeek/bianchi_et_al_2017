@@ -72,3 +72,7 @@ proteome/short.fasta.gz: proteome/short.fasta
 
 clean:
 	rm -f plots/* proteome/* work/* binding-predictions/*
+
+pic:
+	make -Bnd | ../makefile2graph/make2graph | dot -Tpng -o pics/makefile.png
+
