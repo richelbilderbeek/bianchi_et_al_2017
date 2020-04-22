@@ -28,7 +28,7 @@ binders: $(foreach m,$(mhcs),binding-predictions/$m.txt)
 #plots/figure-4-b.pdf: calculate-overlap-controls.R work/hydrophobe-control-peptides.Rdata binders
 #	Rscript $<
 
-#work/hydrophobe-control-peptides.Rdata: hydrophobe-controls.R work/proteome.9mer.hydrophobicity.Rdata
+#work/hydrophobe-control-peptides.Rdata: hydrophobe-controls.R work/tmh.9mers.Rdata work/proteome.9mer.hydrophobicity.Rdata
 #	Rscript $<
 
 plots/figure-3-a.pdf: hydrophobicity-distribution-elution-data.R
@@ -37,10 +37,10 @@ plots/figure-3-a.pdf: hydrophobicity-distribution-elution-data.R
 plots/figure-1-d.pdf: correlate-to-hydrophobicity.R work/tmh-overlapping-binders.Rdata
 	Rscript $<
 
-#work/proteome.9mer.hydrophobicity.Rdata: hydrophobicity-distribution.R work/proteome.Rdata
+#work/proteome.9mer.hydrophobicity.Rdata: hydrophobicity-distribution.R work/proteome.Rdata work/tmh.9mers.Rdata
 #	Rscript $<
 
-work/tmh-overlapping-binders.Rdata: calculate-overlap.R work/proteome.Rdata binders
+work/tmh-overlapping-binders.Rdata: calculate-overlap.R work/proteome.Rdata binders work/tmh.9mers.Rdata
 	Rscript $<
 
 # File 1/3 created by prepare-data.R
