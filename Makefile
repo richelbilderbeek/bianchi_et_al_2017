@@ -25,7 +25,7 @@ test: proteome/short.fasta.gz
 
 binders: $(foreach m,$(mhcs),binding-predictions/$m.txt)
 
-#plots/figure-4-b.pdf: calculate-overlap-controls.R work/hydrophobe-control-peptides.Rdata binders
+#plots/figure-4-b.pdf: calculate-overlap-controls.R work/hydrophobe-control-peptides.Rdata binders work/protein-lengths.txt
 #	Rscript $<
 
 #work/hydrophobe-control-peptides.Rdata: hydrophobe-controls.R work/tmh.9mers.Rdata work/proteome.9mer.hydrophobicity.Rdata
@@ -40,7 +40,7 @@ plots/figure-1-d.pdf: correlate-to-hydrophobicity.R work/tmh-overlapping-binders
 #work/proteome.9mer.hydrophobicity.Rdata: hydrophobicity-distribution.R work/proteome.Rdata work/tmh.9mers.Rdata
 #	Rscript $<
 
-work/tmh-overlapping-binders.Rdata: calculate-overlap.R work/proteome.Rdata binders work/tmh.9mers.Rdata
+work/tmh-overlapping-binders.Rdata: calculate-overlap.R work/proteome.Rdata binders work/tmh.9mers.Rdata work/protein-lengths.txt
 	Rscript $<
 
 # File 1/3 created by prepare-data.R
