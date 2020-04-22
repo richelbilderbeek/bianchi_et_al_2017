@@ -8,13 +8,14 @@ proteome_filename = proteome/UP000005640_9606.fasta.gz
 tma_filename = tmh-predictions/trans-membrane-analysis-shortened.txt
 kyte_doolittle_scale_filename = data/kyte.doolittle.scale.Rdata
 
+# Remove 'plots/figure-4-b.pdf' as this takes too long on Travis
 targets = $(proteome_filename) plots/figure-3-a.pdf plots/figure-1-d.pdf
+# targets = $(proteome_filename) plots/figure-4-b.pdf plots/figure-3-a.pdf plots/figure-1-d.pdf
 
 # These figure panels are at the leaves of the dependency graph.
 # All other figure panels are made as side-effects by intermediate
 # scripts.
 all: $(targets)
-#all: proteome/UP000005640_9606.fasta.gz plots/figure-4-b.pdf plots/figure-3-a.pdf plots/figure-1-d.pdf 
 
 full: proteome/full.fasta.gz
 	cp proteome/full.fasta.gz $(proteome_filename)
@@ -26,11 +27,11 @@ test: proteome/short.fasta.gz
 
 binders: $(foreach m,$(mhcs),binding-predictions/$m.txt)
 
-#plots/figure-4-b.pdf: calculate-overlap-controls.R work/hydrophobe-control-peptides.Rdata binders work/protein-lengths.txt
-#	Rscript $<
+plots/figure-4-b.pdf: calculate-overlap-controls.R work/hydrophobe-control-peptides.Rdata binders work/protein-lengths.txt
+	Rscript $<
 
-#work/hydrophobe-control-peptides.Rdata: hydrophobe-controls.R work/tmh.9mers.Rdata work/proteome.9mer.hydrophobicity.Rdata
-#	Rscript $<
+work/hydrophobe-control-peptides.Rdata: hydrophobe-controls.R work/tmh.9mers.Rdata work/proteome.9mer.hydrophobicity.Rdata
+	Rscript $<
 
 plots/figure-3-a.pdf: hydrophobicity-distribution-elution-data.R $(kyte_doolittle_scale_filename)
 	Rscript $<
@@ -38,8 +39,8 @@ plots/figure-3-a.pdf: hydrophobicity-distribution-elution-data.R $(kyte_doolittl
 plots/figure-1-d.pdf: correlate-to-hydrophobicity.R work/tmh-overlapping-binders.Rdata $(kyte_doolittle_scale_filename)
 	Rscript $<
 
-#work/proteome.9mer.hydrophobicity.Rdata: hydrophobicity-distribution.R work/proteome.Rdata work/tmh.9mers.Rdata $(kyte_doolittle_scale_filename)
-#	Rscript $<
+work/proteome.9mer.hydrophobicity.Rdata: hydrophobicity-distribution.R work/proteome.Rdata work/tmh.9mers.Rdata $(kyte_doolittle_scale_filename)
+	Rscript $<
 
 work/tmh-overlapping-binders.Rdata: calculate-overlap.R work/proteome.Rdata binders work/tmh.9mers.Rdata work/protein-lengths.txt
 	Rscript $<
