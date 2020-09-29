@@ -15,8 +15,11 @@ script:
 
 after_success:
   - find . | egrep -v "\.git"
-
+  # Download thesis
+  - wget https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf
 
 after_failure:
   - find . | egrep -v "\.git"
+  # Download thesis
+  - wget https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf
 
