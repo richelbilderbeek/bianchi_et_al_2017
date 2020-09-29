@@ -63,6 +63,9 @@ binding-predictions/HLA-%.txt : predict-binders.R $(proteome_filename)
 proteome/full.fasta.gz:
 	wget ftp://ftp.ebi.ac.uk/pub/databases/reference_proteomes/QfO/Eukaryota/UP000005640_9606.fasta.gz -O proteome/full.fasta.gz
 
+$(proteome_filename):
+	wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/reference_proteomes/Eukaryota/UP000005640_9606.fasta.gz -O $(proteome_filename)
+
 proteome/full.fasta: proteome/full.fasta.gz
 	gunzip -k proteome/full.fasta.gz
 
