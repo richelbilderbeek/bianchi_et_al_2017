@@ -31,10 +31,8 @@ make test
 ### Run full
 
 ```
-make full
+make
 ```
-
-:warning: to produce figure 4b, modify the Makefile by hand :warning
 
 Be aware that the HLA binding predictions can take several hours. It can
 be useful to speed up the process by running e.g. 'make -j 8' to run 8 
@@ -78,3 +76,7 @@ by Schellens et al, PLoS One (2015) 10:e0136417.
 ```
 make pic
 ```
+
+## Downloads
+
+ * [Re-run done at 2020-09-29](http://richelbilderbeek.nl/bianchi_et_al_2017_20200929.zip)
