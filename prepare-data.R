@@ -124,7 +124,7 @@ message(
   "Saved to 'work/tmh.9mers.Rdata' as a ",
   class(tmh.9mers), ":"
 )
-print(head(tmh.9mers, n = 3))
+message(head(tmh.9mers, n = 3))
 
 # Results in
 # $A0A075B6K6

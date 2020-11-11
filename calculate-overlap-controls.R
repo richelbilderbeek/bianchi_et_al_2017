@@ -18,7 +18,7 @@ ninemers.total <- pl-8
 ninemers.total[ninemers.total < 0] <- 0
 
 perc.binders <- function( mhc = "A01-01" ){
-	print( mhc )
+	message( mhc )
 	d <- fread(paste0("binding-predictions/HLA-",mhc,".txt"), data.table=FALSE)[,c(1,3)]
 	colnames(d) <- c("protein", "start") 
 	d <- unstack( d, start ~ protein )
