@@ -21,8 +21,6 @@ get_schellens_et_al_2015_sup_1 <- function(
   xlsx_filename
 ) {
   testthat::expect_true(file.exists(xlsx_filename))
-  head(readr::read_lines(xlsx_filename))
-  readr::read_csv(xlsx_filename)
   t <- readxl::read_excel(
     path = xlsx_filename,
     skip = 2
