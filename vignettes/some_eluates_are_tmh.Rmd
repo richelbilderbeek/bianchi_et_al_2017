@@ -1,0 +1,100 @@
+---
+title: "some_eluates_are_tmh"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{some_eluates_are_tmh}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bianchietal2017)
+```
+
+It is claimed that some eluates from Schellens et al., 2015,
+are derived from TMHs.
+
+Here we obtain the human reference proteome used:
+
+```{r cache=TRUE}
+t_proteome <- get_proteome(fasta_gz_filename = download_proteome())
+names(t_proteome)
+```
+The human reference proteome contains `r nrow(t_proteome)` sequences.
+
+Here we obtain the (unique) epitope sequences from Schellens et al., 2015:
+
+```{r cache=TRUE}
+t_schellens <- get_schellens_et_al_2015_sup_1(xlsx_filename = download_schellens_et_al_2015_sup_1())
+epitope_sequences <- unique(t_schellens$epitope_sequence)
+head(epitope_sequences)
+```
+There are `r length(epitope_sequences)` unique epitope sequences.
+
+Here we look for the gene names and sequences for those epitopes that
+have exactly 1 match:
+
+```{r}
+# epitope_sequence n_matches sequence
+t_matches <- tibble::tibble(
+  epitope_sequence = epitope_sequences,
+  n_matches = NA,
+  gene_name = NA,
+  sequence = NA
+)
+for (i in seq_len(nrow(t_matches))) {
+  matches <- stringr::str_which(
+    string = t_proteome$sequence,
+    pattern = t_matches$epitope_sequence[i]
+  )
+  t_matches$n_matches[i] <- length(matches)
+  if (length(matches) == 1) {
+    t_matches$sequence[i] <- t_proteome$sequence[matches]
+    t_matches$gene_name[i] <- t_proteome$name[matches]
+  }
+}
+```
+
+The distribution of matches per epitope sequence:
+
+```{r}
+ggplot2::ggplot(t_matches, ggplot2::aes(n_matches)) + ggplot2::geom_histogram()
+```
+The question is, for unique mapping of an epitope onto the human reference proteome:
+are those epitopes indeed overlapping with a TMH?
+
+```{r}
+t_unique_matches <- dplyr::filter(t_matches, n_matches == 1)
+t_unique_matches$topology <- pureseqtmr::predict_topologies_from_sequences(
+  protein_sequences = t_unique_matches$sequence
+)
+t_unique_matches
+```
+
+Zooming in on 
+
+```{r}
+t_unique_matches$n_tmh <- pureseqtmr::count_n_tmhs(t_unique_matches$topology)
+t_unique_matches_with_tmh <- dplyr::filter(t_unique_matches, n_tmh > 0)
+```
+
+Locate the epitope sequence within the human protein sequence:
+
+```{r}
+stringr::str_locate(
+  string = t_unique_matches$sequence[1],
+  pattern = t_unique_matches$epitope_sequence[1]
+)
+stringr::str_locate(
+  string = t_unique_matches$topology[4],
+  pattern = "1*"
+)
+```
+
