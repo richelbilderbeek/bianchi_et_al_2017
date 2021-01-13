@@ -20,4 +20,5 @@ Imports:
     data.table,
     seqinr,
     testthat
-
+Config/testthat/edition: 3
+RoxygenNote: 7.1.1
