@@ -18,6 +18,7 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     data.table,
+    pureseqtmr,
     seqinr,
     testthat
 Config/testthat/edition: 3
