@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(bianchietal2017)
+library(dplyr)
+library(ggplot2)
 ```
 
 It is claimed that some eluates from Schellens et al., 2015,
@@ -41,8 +43,7 @@ There are `r length(epitope_sequences)` unique epitope sequences.
 Here we look for the gene names and sequences for those epitopes that
 have exactly 1 match:
 
-```{r}
-# epitope_sequence n_matches sequence
+```{r cache=TRUE}
 t_matches <- tibble::tibble(
   epitope_sequence = epitope_sequences,
   n_matches = NA,
@@ -64,13 +65,14 @@ for (i in seq_len(nrow(t_matches))) {
 
 The distribution of matches per epitope sequence:
 
-```{r}
-ggplot2::ggplot(t_matches, ggplot2::aes(n_matches)) + ggplot2::geom_histogram()
+```{r cache=TRUE}
+ggplot2::ggplot(t_matches, ggplot2::aes(n_matches)) +
+  ggplot2::geom_histogram(binwidth = 1)
 ```
 The question is, for unique mapping of an epitope onto the human reference proteome:
 are those epitopes indeed overlapping with a TMH?
 
-```{r}
+```{r cache=TRUE}
 t_unique_matches <- dplyr::filter(t_matches, n_matches == 1)
 t_unique_matches$topology <- pureseqtmr::predict_topologies_from_sequences(
   protein_sequences = t_unique_matches$sequence
@@ -80,14 +82,14 @@ t_unique_matches
 
 Zooming in on 
 
-```{r}
+```{r cache=TRUE}
 t_unique_matches$n_tmh <- pureseqtmr::count_n_tmhs(t_unique_matches$topology)
 t_unique_matches_with_tmh <- dplyr::filter(t_unique_matches, n_tmh > 0)
 ```
 
 Locate the epitope sequence within the human protein sequence:
 
-```{r}
+```{r cache=TRUE}
 stringr::str_locate(
   string = t_unique_matches$sequence[1],
   pattern = t_unique_matches$epitope_sequence[1]
@@ -97,4 +99,5 @@ stringr::str_locate(
   pattern = "1*"
 )
 ```
+
 

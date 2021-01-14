@@ -23,3 +23,7 @@ Imports:
     testthat
 Config/testthat/edition: 3
 RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
