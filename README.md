@@ -82,12 +82,15 @@ make pic
  * [Re-run done at 2020-09-29](http://richelbilderbeek.nl/bianchi_et_al_2017_20200929.zip)
 
 Human proteome: 
+
  * Full proteome: download from: [https://www.ebi.ac.uk/reference_proteomes/](https://www.ebi.ac.uk/reference_proteomes/),
    direct download from [ftp://ftp.ebi.ac.uk/pub/databases/reference_proteomes/QfO/Eukaryota/UP000005640_9606.fasta.gz](ftp://ftp.ebi.ac.uk/pub/databases/reference_proteomes/QfO/Eukaryota/UP000005640_9606.fasta.gz), 
    or use `bianchietal2017::download_proteome`
  * Full proteome without selenocysteines: 
    download from: [http://richelbilderbeek.nl/UP000005640_9606_no_u.fasta](http://richelbilderbeek.nl/UP000005640_9606_no_u.fasta),
+
 Topology of human proteome: 
+
  * TMHMM topology of full proteome: impossible, due to selenocysteines, else it would be at [http://richelbilderbeek.nl/UP000005640_9606.tmhmm](http://richelbilderbeek.nl/UP000005640_9606.tmhmm)
  * TMHMM topology of full proteome without selenocysteines: at [http://richelbilderbeek.nl/UP000005640_9606_no_u.tmhmm](http://richelbilderbeek.nl/UP000005640_9606_no_u.tmhmm)
  * PureseqTM topology: [https://www.richelbilderbeek.nl/UP000005640_9606.pureseqtm](https://www.richelbilderbeek.nl/UP000005640_9606.pureseqtm)
