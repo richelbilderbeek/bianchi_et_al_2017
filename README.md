@@ -93,6 +93,8 @@ Topology of human proteome:
 
  * TMHMM topology of full proteome: impossible, due to selenocysteines, else it would be at [http://richelbilderbeek.nl/UP000005640_9606.tmhmm](http://richelbilderbeek.nl/UP000005640_9606.tmhmm)
  * TMHMM topology of full proteome without selenocysteines: at [http://richelbilderbeek.nl/UP000005640_9606_no_u.tmhmm](http://richelbilderbeek.nl/UP000005640_9606_no_u.tmhmm)
- * PureseqTM topology: [https://www.richelbilderbeek.nl/UP000005640_9606.pureseqtm](https://www.richelbilderbeek.nl/UP000005640_9606.pureseqtm)
+ * PureseqTM topology: [https://www.richelbilderbeek.nl/UP000005640_9606.pureseqtm](https://www.richelbilderbeek.nl/UP000005640_9606.pureseqtm) [1]
 
+## References
 
+ * [1] Changed the predicted topology of `TRDD1_HUMAN` from `[nothing]` to `00` (i.e. cytosolic)

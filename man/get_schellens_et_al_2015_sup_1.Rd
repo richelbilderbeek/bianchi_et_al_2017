@@ -4,11 +4,14 @@
 \alias{get_schellens_et_al_2015_sup_1}
 \title{Get the table of Supplementary Material 1 from
 Schellens et al., 2015.
-Assumes the file is already downloaded.
-Use \link{download_schellens_et_al_2015_sup_1}
-to download the file.}
+Will download the file if needed.}
 \usage{
-get_schellens_et_al_2015_sup_1(xlsx_filename)
+get_schellens_et_al_2015_sup_1(
+  url = "http://richelbilderbeek.nl/schellens_et_al_2015_s_1.xlsx",
+  xlsx_filename = file.path(rappdirs::user_data_dir(appname = "bianchietal2017"),
+    "schellens_et_al_2015_s_1.xlsx"),
+  verbose = FALSE
+)
 }
 \arguments{
 \item{xlsx_filename}{the XLSX filename}
@@ -30,7 +33,5 @@ a \link{tibble}[tibble], with columns named
 \description{
 Get the table of Supplementary Material 1 from
 Schellens et al., 2015.
-Assumes the file is already downloaded.
-Use \link{download_schellens_et_al_2015_sup_1}
-to download the file.
+Will download the file if needed.
 }

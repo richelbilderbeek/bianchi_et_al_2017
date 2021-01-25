@@ -15,17 +15,13 @@ download_proteome(
 \item{url}{the download URL,
 which is \url{ftp://ftp.ebi.ac.uk/pub/databases/reference_proteomes/QfO/Eukaryota/UP000005640_9606.fasta.gz}}
 
-\item{verbose}{set to TRUE for more output}
+\item{fasta_gz_filename}{the \code{fasta.gz} filename}
 
-\item{xlsx_filename}{the XLSX filename}
+\item{verbose}{set to TRUE for more output}
 }
 \value{
-the XLSX filename of the downloaded file
+the \code{fasta.gz} name of the downloaded file
 }
 \description{
 Downloads the \code{fasta.gz} file by Bianchi et al., 2017
-}
-\seealso{
-use \link{get_schellens_et_al_2015_sup_1} to
-  read the table as a \link{tibble}[tibble]
 }

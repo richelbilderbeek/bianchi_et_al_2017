@@ -6,7 +6,8 @@
 \usage{
 download_schellens_et_al_2015_sup_1(
   url = "http://richelbilderbeek.nl/schellens_et_al_2015_s_1.xlsx",
-  xlsx_filename = tempfile(fileext = ".xlsx"),
+  xlsx_filename = file.path(rappdirs::user_data_dir(appname = "bianchietal2017"),
+    "schellens_et_al_2015_s_1.xlsx"),
   verbose = FALSE
 )
 }

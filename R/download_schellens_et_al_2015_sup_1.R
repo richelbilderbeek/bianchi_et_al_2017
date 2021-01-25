@@ -11,9 +11,17 @@
 #' @export
 download_schellens_et_al_2015_sup_1 <- function(
   url = "http://richelbilderbeek.nl/schellens_et_al_2015_s_1.xlsx",
-  xlsx_filename = tempfile(fileext = ".xlsx"),
+  xlsx_filename = file.path(
+    rappdirs::user_data_dir(appname = "bianchietal2017"),
+    "schellens_et_al_2015_s_1.xlsx"
+  ),
   verbose = FALSE
 ) {
+  dir.create(
+    path = dirname(xlsx_filename),
+    showWarnings = verbose,
+    recursive = TRUE
+  )
   utils::download.file(
     url = url,
     destfile = xlsx_filename,
