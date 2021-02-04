@@ -10,5 +10,4 @@ test_that("use", {
 test_that("use", {
   xlsx_filename <- download_schellens_et_al_2015_sup_1()
   expect_true(file.exists(xlsx_filename))
-  readLines(xlsx_filename)
 })

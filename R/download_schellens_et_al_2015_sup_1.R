@@ -7,7 +7,7 @@
 #' @param verbose set to TRUE for more output
 #' @return the XLSX filename of the downloaded file
 #' @seealso use \link{get_schellens_et_al_2015_sup_1} to
-#'   read the table as a \link{tibble}[tibble]
+#'   read the table as a \link[tibble]{tibble}
 #' @export
 download_schellens_et_al_2015_sup_1 <- function(
   url = "http://richelbilderbeek.nl/schellens_et_al_2015_s_1.xlsx",

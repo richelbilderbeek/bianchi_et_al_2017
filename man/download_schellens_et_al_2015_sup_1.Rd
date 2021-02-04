@@ -29,5 +29,5 @@ Downloads the XLSX file by Schellens et al., 2015
 }
 \seealso{
 use \link{get_schellens_et_al_2015_sup_1} to
-  read the table as a \link{tibble}[tibble]
+  read the table as a \link[tibble]{tibble}
 }

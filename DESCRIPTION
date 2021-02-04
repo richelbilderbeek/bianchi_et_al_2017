@@ -13,9 +13,11 @@ Description: In 2017, Frans Bianchi, Johannes Textor and Geert van den
   They supplied the R code to their work at 
   'https://www.frontiersin.org/articles/10.3389/fimmu.2017.01118/full#supplementary-material'.
   This package runs that code.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Depends: 
+    R (>= 3.5.0)
 Imports: 
     data.table,
     pureseqtmr,
