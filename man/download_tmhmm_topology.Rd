@@ -26,5 +26,5 @@ Downloads the \code{.tmhmm} file by Bianchi et al., 2017
 }
 \seealso{
 use \link{get_tmhmm_topology} to
-  read the table as a \link{tibble}[tibble]
+  read the table as a \link[tibble]{tibble}
 }

@@ -17,7 +17,7 @@ get_schellens_et_al_2015_sup_1(
 \item{xlsx_filename}{the XLSX filename}
 }
 \value{
-a \link{tibble}[tibble], with columns named
+a \link[tibble]{tibble}, with columns named
 \code{cell_line},
 \code{infected},
 \code{epitope_sequence},

@@ -4,7 +4,7 @@
 #' Use \link{download_tmhmm_topology}
 #' to download the pre-calculated topology.
 #' @param tmhmm_filename name of the TMHMM file
-#' @return a \link{tibble}[tibble], with columns named
+#' @return a \link[tibble]{tibble}, with columns named
 #' \code{name} and \code{sequences}
 #' @export
 get_tmhmm_topology <- function(

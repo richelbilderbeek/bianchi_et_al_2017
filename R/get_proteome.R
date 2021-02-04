@@ -5,7 +5,7 @@
 #' to download the file.
 #' @param fasta_gz_filename the \code{.fasta.gz} filename
 #' @param fasta_filename name of a temporary FASTA file
-#' @return a \link{tibble}[tibble], with columns named
+#' @return a \link[tibble]{tibble}, with columns named
 #' \code{name} and \code{sequences}
 #' @export
 get_proteome <- function(

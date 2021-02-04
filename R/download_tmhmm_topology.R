@@ -5,7 +5,7 @@
 #' @param verbose set to TRUE for more output
 #' @return the TMHMM filename of the downloaded file
 #' @seealso use \link{get_tmhmm_topology} to
-#'   read the table as a \link{tibble}[tibble]
+#'   read the table as a \link[tibble]{tibble}
 #' @export
 download_tmhmm_topology <- function(
   url = "http://richelbilderbeek.nl/UP000005640_9606.tmhmm",

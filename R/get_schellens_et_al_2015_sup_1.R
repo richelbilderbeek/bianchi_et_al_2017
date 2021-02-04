@@ -2,7 +2,7 @@
 #' Schellens et al., 2015.
 #' Will download the file if needed.
 #' @param xlsx_filename the XLSX filename
-#' @return a \link{tibble}[tibble], with columns named
+#' @return a \link[tibble]{tibble}, with columns named
 #' \code{cell_line},
 #' \code{infected},
 #' \code{epitope_sequence},

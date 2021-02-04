@@ -14,7 +14,7 @@ get_tmhmm_topology(tmhmm_filename)
 \item{tmhmm_filename}{name of the TMHMM file}
 }
 \value{
-a \link{tibble}[tibble], with columns named
+a \link[tibble]{tibble}, with columns named
 \code{name} and \code{sequences}
 }
 \description{

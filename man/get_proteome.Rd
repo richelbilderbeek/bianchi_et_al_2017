@@ -16,7 +16,7 @@ get_proteome(fasta_gz_filename, fasta_filename = tempfile(fileext = ".fasta"))
 \item{fasta_filename}{name of a temporary FASTA file}
 }
 \value{
-a \link{tibble}[tibble], with columns named
+a \link[tibble]{tibble}, with columns named
 \code{name} and \code{sequences}
 }
 \description{
