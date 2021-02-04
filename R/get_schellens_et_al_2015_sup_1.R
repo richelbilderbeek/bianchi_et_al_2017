@@ -1,7 +1,9 @@
 #' Get the table of Supplementary Material 1 from
 #' Schellens et al., 2015.
 #' Will download the file if needed.
+#' @param url the URL
 #' @param xlsx_filename the XLSX filename
+#' @param verbose set to TRUE for more output
 #' @return a \link[tibble]{tibble}, with columns named
 #' \code{cell_line},
 #' \code{infected},

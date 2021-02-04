@@ -14,7 +14,11 @@ get_schellens_et_al_2015_sup_1(
 )
 }
 \arguments{
+\item{url}{the URL}
+
 \item{xlsx_filename}{the XLSX filename}
+
+\item{verbose}{set to TRUE for more output}
 }
 \value{
 a \link[tibble]{tibble}, with columns named
