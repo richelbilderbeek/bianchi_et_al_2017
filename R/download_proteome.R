@@ -6,7 +6,7 @@
 #' @return the \code{fasta.gz} name of the downloaded file
 #' @export
 download_proteome <- function(
-  url = "ftp://ftp.ebi.ac.uk/pub/databases/reference_proteomes/QfO/Eukaryota/UP000005640_9606.fasta.gz",
+  url = get_proteome_url(),
   fasta_gz_filename = tempfile(fileext = ".fasta.gz"),
   verbose = FALSE
 ) {

@@ -24,7 +24,8 @@ Imports:
     R.utils,
     readxl,
     seqinr,
-    testthat
+    testthat,
+    tibble
 Config/testthat/edition: 3
 RoxygenNote: 7.1.1
 Suggests: 

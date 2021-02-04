@@ -5,8 +5,7 @@
 \title{Downloads the \code{fasta.gz} file by Bianchi et al., 2017}
 \usage{
 download_proteome(
- 
-    url = "ftp://ftp.ebi.ac.uk/pub/databases/reference_proteomes/QfO/Eukaryota/UP000005640_9606.fasta.gz",
+  url = get_proteome_url(),
   fasta_gz_filename = tempfile(fileext = ".fasta.gz"),
   verbose = FALSE
 )
