@@ -20,7 +20,7 @@ Depends:
     R (>= 3.5.0)
 Imports: 
     data.table,
-    pureseqtmr,
+    pureseqtmr (>= 1.3),
     R.utils,
     readxl,
     seqinr,
