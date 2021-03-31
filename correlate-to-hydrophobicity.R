@@ -17,11 +17,14 @@ hyPref <- function( mhc="A02-01" ){
 	colEntropies <- apply(M, 2, function(x) {
         	x <- x * log(x)
         	x[is.nan(x)] <- 0
-      		log(20) + sum(x) # Where does this value come from?
+      		log(20) + sum(x) # 20 is the number of (regular) amino acids
     	})
     	M <- scale(M, center = FALSE, scale = 1/colEntropies)
 
-	sum(sweep( M, 1, kyte.doolittle.scale[rownames(M)], "*" )) / 9  # Where does this value come from? I predict the number of AAs in an epitope
+	hydro_1 <-  sum(sweep( M, 1, kyte.doolittle.scale[rownames(M)], "*" )) / 9  # The most common length of an epitope, in AAs
+	hydro_2 <-  sum(sweep( M, 1, Peptides::hydrophobicity(rownames(M)), "*" )) / 9  # The most common length of an epitope, in AAs
+	testthat::expect_equal(hydro_1, hydro_2)
+	hydro_1
 }
 
 pdf("plots/figure-1-d.pdf", width=4, height=4,
