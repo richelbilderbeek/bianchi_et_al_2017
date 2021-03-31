@@ -3,9 +3,6 @@ library(EpitopePrediction)
 # Loads 'r'
 load("work/tmh-overlapping-binders.Rdata")
 
-# Loads kyte.doolittle.scale
-load("data/kyte.doolittle.scale.Rdata")
-
 # Calculate the hydrophobic preference score from a haplotype
 hyPref <- function( mhc="A02-01" ){
 	mhc <- paste0("HLA-",gsub("-",":",mhc))
@@ -21,10 +18,7 @@ hyPref <- function( mhc="A02-01" ){
     	})
     	M <- scale(M, center = FALSE, scale = 1/colEntropies)
 
-	hydro_1 <-  sum(sweep( M, 1, kyte.doolittle.scale[rownames(M)], "*" )) / 9  # The most common length of an epitope, in AAs
-	hydro_2 <-  sum(sweep( M, 1, Peptides::hydrophobicity(rownames(M)), "*" )) / 9  # The most common length of an epitope, in AAs
-	testthat::expect_equal(hydro_1, hydro_2)
-	hydro_1
+	sum(sweep( M, 1, Peptides::hydrophobicity(rownames(M)), "*" )) / 9  # The most common length of an epitope, in AAs
 }
 
 pdf("plots/figure-1-d.pdf", width=4, height=4,
