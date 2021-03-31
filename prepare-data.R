@@ -97,7 +97,7 @@ for (protein_name in names(x)) {
     #message("Cannot find protein named '", protein_name, "'")
     next
   }
-  expect_true(!is.null(x[[protein_name]]))
+  testthat::expect_true(!is.null(x[[protein_name]]))
   indices <- x[[protein_name]]
   protein_sequence <- proteome[[protein_name]]
   protein_sequence_length <- nchar(protein_sequence)
@@ -106,11 +106,6 @@ for (protein_name in names(x)) {
 	  1:(protein_sequence_length - 8)
 	)
 }
-# OLDSKOOL
-# For each protein name...
-#for( i in names(x) ){
-#	x[[i]] <- intersect( x[[i]], 1:(nchar(proteome[[i]])-8) ) # Bug in this line
-#}
 
 for( i in names(proteome) ){
 	if( is.null(x[[i]]) ){
