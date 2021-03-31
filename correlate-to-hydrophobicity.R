@@ -1,10 +1,12 @@
-library( EpitopePrediction )
+library(EpitopePrediction)
 
+# Loads 'r'
 load("work/tmh-overlapping-binders.Rdata")
+
+# Loads kyte.doolittle.scale
 load("data/kyte.doolittle.scale.Rdata")
 
-M <- smmMatrix( "HLA-A02:01" )$M
-
+# Calculate the hydrophobic preference score from a haplotype
 hyPref <- function( mhc="A02-01" ){
 	mhc <- paste0("HLA-",gsub("-",":",mhc))
 
@@ -15,11 +17,11 @@ hyPref <- function( mhc="A02-01" ){
 	colEntropies <- apply(M, 2, function(x) {
         	x <- x * log(x)
         	x[is.nan(x)] <- 0
-      		log(20) + sum(x)
+      		log(20) + sum(x) # Where does this value come from?
     	})
     	M <- scale(M, center = FALSE, scale = 1/colEntropies)
 
-	sum(sweep( M, 1, kyte.doolittle.scale[rownames(M)], "*" )) / 9
+	sum(sweep( M, 1, kyte.doolittle.scale[rownames(M)], "*" )) / 9  # Where does this value come from? I predict the number of AAs in an epitope
 }
 
 pdf("plots/figure-1-d.pdf", width=4, height=4,
@@ -27,8 +29,10 @@ pdf("plots/figure-1-d.pdf", width=4, height=4,
 
 par( bty="n", mar=c(4,4,.2,.2) )
 
+# x: percentage of binders that are TMH, e.g. 7.68 equals 7.68 percent
 x <- 100* r[1,] / r[2,]
-y <- sapply( colnames(r), hyPref )+0.3963411
+# y: hydrophobic preference scores
+y <- sapply( colnames(r), hyPref ) + 0.3963411 # Where does this value come from?
 
 plot( NA,
 	xlab="Percentage of TMH epitopes",
