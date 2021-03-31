@@ -33,6 +33,8 @@ hlas <-  c(
 r <- sapply( hlas,
 	perc.binders )
 
+
+# Oldskool plotting
 pdf("plots/figure-1-a.pdf",width=4,height=4,useDingbats=FALSE)
 
 par( mar=c(6,5,.2,.2) )
@@ -78,6 +80,29 @@ abline( h=100*ci[1], col=2 )
 abline( h=100*ci[2], col=2 )
 
 dev.off()
+
+# Newskool plotting
+do_new_skool_plotting <- FALSE
+if (do_new_skool_plotting) {
+  t <- tibble::tibble(
+    haplotype = as.factor(colnames(r)),
+    f_tmh = r[1, ] / r[2, ]
+  )
+  ggplot2::ggplot(t, ggplot2::aes(x = haplotype, y = f_tmh)) +
+    ggplot2::geom_col(fill = "#BBBBBB") +
+    ggplot2::scale_y_continuous(
+      "Epitopes overlapping with TMH",
+      labels = scales::percent
+    ) +
+    ggplot2::geom_hline(yintercept = ci[1], col = "red") +
+    ggplot2::geom_hline(yintercept = ci[2], col = "red") +
+    bbbq::get_bbbq_theme() +
+    ggplot2::theme(
+      axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5, hjust=1)
+    ) +
+    ggplot2::theme(text = ggplot2::element_text(size = 17)) +
+    ggplot2::ggsave("~/fig_1a.png", width = 7, height = 7)
+}
 
 save( r, file="work/tmh-overlapping-binders.Rdata" )
 
