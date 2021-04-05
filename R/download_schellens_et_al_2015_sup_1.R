@@ -19,7 +19,7 @@ download_schellens_et_al_2015_sup_1 <- function(
 ) {
   dir.create(
     path = dirname(xlsx_filename),
-    showWarnings = verbose,
+    showWarnings = FALSE,
     recursive = TRUE
   )
   utils::download.file(
