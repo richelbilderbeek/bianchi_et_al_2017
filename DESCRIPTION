@@ -15,7 +15,6 @@ Description: In 2017, Frans Bianchi, Johannes Textor and Geert van den
   This package runs that code.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Depends: 
     R (>= 3.5.0)
 Imports: 
