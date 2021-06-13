@@ -88,20 +88,28 @@ if (do_new_skool_plotting) {
     haplotype = as.factor(colnames(r)),
     f_tmh = r[1, ] / r[2, ]
   )
-  ggplot2::ggplot(t, ggplot2::aes(x = haplotype, y = f_tmh)) +
+  p <- ggplot2::ggplot(t, ggplot2::aes(x = haplotype, y = f_tmh)) +
     ggplot2::geom_col(fill = "#BBBBBB") +
     ggplot2::scale_y_continuous(
       "Epitopes overlapping with TMH",
       labels = scales::percent
     ) +
-    ggplot2::geom_hline(yintercept = ci[1], col = "red") +
-    ggplot2::geom_hline(yintercept = ci[2], col = "red") +
     bbbq::get_bbbq_theme() +
     ggplot2::theme(
       axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5, hjust=1)
     ) +
-    ggplot2::theme(text = ggplot2::element_text(size = 17)) +
+    ggplot2::theme(text = ggplot2::element_text(size = 17))
+
+  p +
+    ggplot2::geom_hline(yintercept = ci[1], col = "red") +
+    ggplot2::geom_hline(yintercept = ci[2], col = "red") +
     ggplot2::ggsave("~/fig_1a.png", width = 7, height = 7)
+
+  p +
+    ggplot2::geom_hline(yintercept = ci[1], col = "black", lty = "dashed") +
+    ggplot2::geom_hline(yintercept = ci[2], col = "black", lty = "dashed") +
+    ggplot2::ggsave("~/fig_1a_bw.png", width = 7, height = 7)
+
 }
 
 save( r, file="work/tmh-overlapping-binders.Rdata" )
