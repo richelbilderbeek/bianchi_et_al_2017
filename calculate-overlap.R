@@ -82,7 +82,7 @@ abline( h=100*ci[2], col=2 )
 dev.off()
 
 # Newskool plotting
-do_new_skool_plotting <- FALSE
+do_new_skool_plotting <- TRUE
 if (do_new_skool_plotting) {
   t <- tibble::tibble(
     haplotype = as.factor(colnames(r)),
@@ -97,7 +97,7 @@ if (do_new_skool_plotting) {
 
   p; ggplot2::geom_hline(yintercept = ci[1], col = "red"); ggplot2::geom_hline(yintercept = ci[2], col = "red"); ggplot2::ggsave("~/fig_1a.png", width = 7, height = 7)
 
-  p; ggplot2::geom_hline(yintercept = ci[1], col = "black", lty = "dashed"); ggplot2::geom_hline(yintercept = ci[2], col = "black", lty = "dashed"); ggplot2::ggsave("~/fig_1a_bw.png", width = 7, height = 7)
+  p; ggplot2::geom_hline(yintercept = ci[1], col = "black", lty = "dashed"); ggplot2::geom_hline(yintercept = ci[2], col = "black", lty = "dashed"); ggplot2::ggsave("~/fig_1a_bw.png", width = 7, height = 7); ggplot2::ggsave("~/fig_1a_bw.tiff", width = 7, height = 7)
 
 }
 
