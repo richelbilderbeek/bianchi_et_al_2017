@@ -1,9 +1,9 @@
 # bianchi_et_al_2017
 
-Branch   |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.com)
----------|----------------------------------------------------------------------------------------------------------------------------------------------------------
-`master` |[![Build Status](https://travis-ci.com/richelbilderbeek/bianchi_et_al_2017.svg?branch=master)](https://travis-ci.com/richelbilderbeek/bianchi_et_al_2017)
-`develop`|[![Build Status](https://travis-ci.com/richelbilderbeek/bianchi_et_al_2017.svg?branch=develop)](https://travis-ci.com/richelbilderbeek/bianchi_et_al_2017)
+Branch   |[![GitHub Actions logo](man/figures/GitHubActions.png)](https://github.com/richelbilderbeek/bianchi_et_al_2017/actions)|[![Codecov logo](man/figures/Codecov.png)](https://www.codecov.io)
+---------|-----------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------
+`master` |![R-CMD-check](https://github.com/richelbilderbeek/bianchi_et_al_2017/workflows/R-CMD-check/badge.svg?branch=master)   |[![codecov.io](https://codecov.io/github/richelbilderbeek/bianchi_et_al_2017/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/bianchi_et_al_2017/branch/master)
+`develop`|![R-CMD-check](https://github.com/richelbilderbeek/bianchi_et_al_2017/workflows/R-CMD-check/badge.svg?branch=develop)  |[![codecov.io](https://codecov.io/github/richelbilderbeek/bianchi_et_al_2017/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/bianchi_et_al_2017/branch/develop)
 
 R code for 'Transmembrane Helices Are an Overlooked Source
 of Major Histocompatibility Complex Class I Epitopes',
