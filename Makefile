@@ -58,6 +58,7 @@ work/tmh.9mers.Rdata : prepare-data.R $(proteome_filename) $(tma_filename)
 	Rscript $<
 
 binding-predictions/HLA-%.txt : predict-binders.R $(proteome_filename)
+	Rscript -e 'remotes::install_github("jtextor/epitope-prediction")'
 	Rscript $< HLA-$* > $@	
 
 proteome/full.fasta.gz:
