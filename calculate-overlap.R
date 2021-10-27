@@ -93,13 +93,14 @@ if (do_new_skool_plotting) {
       ggplot2::scale_y_continuous(
       "Epitopes overlapping with TMH",
       labels = scales::percent
-    ) + bbbq::get_bbbq_theme() + ggplot2::theme(
+    ) + bbbq::get_bbbq_theme() + 
+    ggplot2::theme(
       axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5, hjust=1)
-    ); ggplot2::theme(text = ggplot2::element_text(size = 17))
+    ) + ggplot2::theme(text = ggplot2::element_text(size = 17))
   p
-  p + ggplot2::geom_hline(yintercept = ci[1], col = "red") + ggplot2::geom_hline(yintercept = ci[2], col = "red"); ggplot2::ggsave("plots/figure-1-a.png", width = 7, height = 7)
+  p + ggplot2::geom_hline(yintercept = ci[1], col = "red") + ggplot2::geom_hline(yintercept = ci[2], col = "red"); ggplot2::ggsave("plots/figure-1-a.png", width = 180, units = "mm", height = 180)
   p + ggplot2::geom_hline(yintercept = ci[1], col = "red") + ggplot2::geom_hline(yintercept = ci[2], col = "red"); ggplot2::ggsave("plots/figure-1-a.tiff", width = 180, units = "mm", height = 180)
-  p + ggplot2::geom_hline(yintercept = ci[1], col = "black", lty = "dashed") + ggplot2::geom_hline(yintercept = ci[2], col = "black", lty = "dashed"); ggplot2::ggsave("plots/figure-1-a_bw.png", width = 7, height = 7);
+  p + ggplot2::geom_hline(yintercept = ci[1], col = "black", lty = "dashed") + ggplot2::geom_hline(yintercept = ci[2], col = "black", lty = "dashed"); ggplot2::ggsave("plots/figure-1-a_bw.png", width = 180, units = "mm", height = 180);
   p + ggplot2::geom_hline(yintercept = ci[1], col = "black", lty = "dashed") + ggplot2::geom_hline(yintercept = ci[2], col = "black", lty = "dashed"); ggplot2::ggsave("plots/figure-1-a_bw.tiff", width = 180, units = "mm", height = 180)
 }
 
