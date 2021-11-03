@@ -15,11 +15,11 @@ test_that("use", {
 })
 
 test_that("proteome and topology has same names", {
-  proteome <- get_proteome(
-    fasta_gz_filename = download_proteome()
+  proteome <- bianchietal2017::get_proteome(
+    fasta_gz_filename = bianchietal2017::download_proteome()
   )
-  topology <- get_tmhmm_topology(
-    tmhmm_filename = download_tmhmm_topology()
+  topology <- bianchietal2017::get_tmhmm_topology(
+    tmhmm_filename = bianchietal2017::download_tmhmm_topology()
   )
   expect_equal(nrow(proteome), nrow(topology))
   expect_true(tibble::is_tibble(t))

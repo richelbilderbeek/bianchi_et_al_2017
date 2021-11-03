@@ -36,6 +36,7 @@ jobs:
           remotes::install_github("richelbilderbeek/cobaltr")
           remotes::install_github("richelbilderbeek/mhcnuggetsr")
           remotes::install_github("richelbilderbeek/mhcnuggetsrinstall")
+          remotes::install_github("richelbilderbeek/bbbq")
           remotes::install_bioc("msa")
           remotes::install_bioc("Biostrings")
           remotes::install_deps(dependencies = TRUE)

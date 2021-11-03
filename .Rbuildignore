@@ -1,4 +1,13 @@
-^bianchietal2017\.Rproj$
+^\..Rcheck$
+^\.Rhistory$
 ^\.Rproj\.user$
-^\.travis\.yml$
+^\.git$
 ^\.github$
+^\.github/.gitignore$
+^\.gitignore$
+^\.travis\.yml$
+^bianchietal2017\.Rproj$
+^binding-predictions/.gitignore$
+^plots/.gitignore$
+^proteome/.gitignore$
+^work/.gitignore$
