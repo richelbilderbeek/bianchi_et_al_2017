@@ -1,0 +1,61 @@
+# For help debugging build failures open an issue on the RStudio community with the 'github-actions' tag.
+# https://community.rstudio.com/new-topic?category=Package%20development&tags=github-actions
+on:
+  push:
+  pull_request:
+  schedule:
+  - cron: "0 0 17 * *"
+
+name: R-CMD-check
+
+jobs:
+  R-CMD-check:
+    runs-on: ubuntu-18.04
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v1
+
+      - name: Install libcurl4-openssl-dev
+        run: sudo apt install -qq libcurl4-openssl-dev
+
+      - name: Fix rJava error # from https://travis-ci.community/t/cannot-connect-to-java-from-r/9754/8
+        run: sudo $(which R) CMD javareconf
+
+      - name: Install dependencies
+        run: |
+          install.packages(c("remotes", "rcmdcheck"))
+          remotes::install_github("richelbilderbeek/tmhmm")
+          remotes::install_github("richelbilderbeek/pureseqtmr")
+          remotes::install_github("richelbilderbeek/mhcnpreds")
+          remotes::install_github("richelbilderbeek/nmhc2ppreds")
+          remotes::install_github("jtextor/epitope-prediction")
+          remotes::install_github("richelbilderbeek/epiprepreds")
+          remotes::install_github("richelbilderbeek/cobaltr")
+          remotes::install_github("richelbilderbeek/mhcnuggetsr")
+          remotes::install_github("richelbilderbeek/mhcnuggetsrinstall")
+          remotes::install_bioc("msa")
+          remotes::install_bioc("Biostrings")
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("tidyr")
+          remotes::install_cran("rcmdcheck")
+          remotes::install_cran("covr")
+          remotes::install_cran("lintr")
+          remotes::install_github("MangoTheCat/goodpractice")
+        shell: Rscript {0}
+
+      - name: Install MHCnuggetsr
+        run: Rscript -e 'mhcnuggetsrinstall::install_mhcnuggets()'
+
+      - name: Check
+        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
+        shell: Rscript {0}
+
+      - name: Test coverage
+        run: Rscript -e 'covr::codecov()'
+
+      - name: Lint
+        run: Rscript -e 'lintr::lint_package()'
+

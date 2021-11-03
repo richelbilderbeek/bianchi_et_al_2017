@@ -40,5 +40,5 @@ jobs:
         shell: Rscript {0}
 
       - name: Make
-        run: make
+        run: timeout 10m make
 
