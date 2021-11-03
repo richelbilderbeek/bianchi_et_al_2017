@@ -10,6 +10,7 @@
 get_tmhmm_topology <- function(
   tmhmm_filename
 ) {
+  stop("TODO: remove? Use 'bbbq::get_topology' instead")
   testthat::expect_true(file.exists(tmhmm_filename))
   t <- pureseqtmr::load_fasta_file_as_tibble_cpp(tmhmm_filename)
   t

@@ -12,6 +12,7 @@ download_tmhmm_topology <- function(
   tmhmm_filename = tempfile(fileext = ".tmhmm"),
   verbose = FALSE
 ) {
+  stop("TODO: remove? Use 'bbbq::get_topology' instead")
   utils::download.file(
     url = url,
     destfile = tmhmm_filename,

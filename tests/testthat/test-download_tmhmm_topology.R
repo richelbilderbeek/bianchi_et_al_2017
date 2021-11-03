@@ -1,4 +1,5 @@
 test_that("use", {
+  skip("TODO: remove? Use 'bbbq::get_topology' instead")
   tmhmm_filename <- tempfile()
   expect_false(file.exists(tmhmm_filename))
   download_tmhmm_topology(
@@ -8,11 +9,13 @@ test_that("use", {
 })
 
 test_that("use", {
+  skip("TODO: remove? Use 'bbbq::get_topology' instead")
   tmhmm_filename <- download_tmhmm_topology()
   expect_true(file.exists(tmhmm_filename))
 })
 
 test_that("read data", {
+  skip("TODO: remove? Use 'bbbq::get_topology' instead")
   tmhmm_filename <- download_tmhmm_topology()
   expect_true(file.exists(tmhmm_filename))
 })

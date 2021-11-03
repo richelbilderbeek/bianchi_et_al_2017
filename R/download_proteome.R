@@ -10,6 +10,7 @@ download_proteome <- function(
   fasta_gz_filename = tempfile(fileext = ".fasta.gz"),
   verbose = FALSE
 ) {
+  stop("TODO: remove? Use 'bbbq::get_proteome' instead")
   utils::download.file(
     url = url,
     destfile = fasta_gz_filename,

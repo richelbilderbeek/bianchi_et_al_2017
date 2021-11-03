@@ -1,4 +1,5 @@
 test_that("use", {
+  skip("TODO: remove? Use 'bbbq::get_proteome' instead")
   fasta_gz_filename <- download_proteome()
   expect_true(file.exists(fasta_gz_filename))
   t <- get_proteome(

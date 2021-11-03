@@ -12,6 +12,7 @@ get_proteome <- function(
   fasta_gz_filename,
   fasta_filename = tempfile(fileext = ".fasta")
 ) {
+  stop("TODO: remove? Use 'bbbq::get_proteome' instead")
   testthat::expect_true(file.exists(fasta_gz_filename))
   R.utils::gunzip(
     filename = fasta_gz_filename,
