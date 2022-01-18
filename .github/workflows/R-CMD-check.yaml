@@ -35,6 +35,7 @@ jobs:
           remotes::install_github("richelbilderbeek/epiprepreds")
           remotes::install_github("richelbilderbeek/cobaltr")
           remotes::install_github("richelbilderbeek/mhcnuggetsr")
+          remotes::install_github("richelbilderbeek/ormr")
           remotes::install_github("richelbilderbeek/mhcnuggetsrinstall")
           remotes::install_bioc("Biostrings")
           remotes::install_github("richelbilderbeek/bbbq")
