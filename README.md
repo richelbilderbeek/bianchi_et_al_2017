@@ -14,7 +14,17 @@ These R scripts make almost all figures in the paper
 by Frans Bianchi, Johannes Textor, and Geert van den Bogaart.
 (DOI: 10.3389/fimmu.2017.01118)
 
+## Figure 3
+
+![](bianchi_et_2018_fig_3_published.png)
+
+> Figure 3 as published
+
 Figure 3 is made by [tmh-predictions/HLA_predictions.xlsx](tmh-predictions/HLA_predictions.xlsx).
+
+![](bianchi_et_2018_fig_3_raw.png)
+
+> Figure 3 in the Excel sheet
 
 ## Usage
 
