@@ -60,4 +60,3 @@ jobs:
 
       - name: Lint
         run: Rscript -e 'lintr::lint_package()'
-
