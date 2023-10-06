@@ -115,3 +115,4 @@ Topology of human proteome:
 
 * [1] Changed the predicted topology of `TRDD1_HUMAN` from `[nothing]`
   to `00` (i.e. cytosolic)
+
